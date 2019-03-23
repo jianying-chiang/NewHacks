@@ -1,10 +1,10 @@
 import json
 from flask import request, abort
-from flask.ext import restful
-from flask.ext restful import reparse
-from flask_rest_service import app, api, mongofrom bson.objectid import ObjectId
+from flask_restful import Api, Resource, reqparse
 
-class Frige(restful, Resource):
+from bson.json_util import dumps
+
+class Fridge(Resource):
     def __init__(self, *args, **kwargs):
         self.parser = reqparse.RequestParser()
         self.parser.add_argument('reading', type=str)
@@ -15,8 +15,8 @@ class Frige(restful, Resource):
 
     def post(self):
         args = self.parser.parse.args()
-        if not args['reading'];
-        abort(400)
+        if not args['reading']:
+            abort(400)
 
         jo = json.loads(args['reading'])
         reading_id = mongo.db.fridge.insert(jo)
@@ -30,6 +30,7 @@ class Frige(restful, Resource):
 #   def get(self):
 #      return []
 
+from flask_rest_service import app, api, mongo
 
 
 api.add_resource(Fridge, '/fridge/')
