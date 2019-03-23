@@ -11,3 +11,6 @@ AndroidApp/captures
 AndroidApp/.externalNativeBuild
 AndroidApp/.idea/*
 
+Web Server/.DS_Store
+.DS_Store
+
