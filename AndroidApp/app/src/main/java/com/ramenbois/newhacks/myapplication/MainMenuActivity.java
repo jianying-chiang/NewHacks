@@ -14,14 +14,14 @@ import android.widget.Toast;
 public class MainMenuActivity extends AppCompatActivity {
 
     private ImageButton mOpenCamera;
+    private ImageButton mOpenRecipes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainmenu);
         addCameraButton();
-
-
+        addRecipesButton();
     }
 
     private void addCameraButton() {
@@ -33,24 +33,19 @@ public class MainMenuActivity extends AppCompatActivity {
                 if (!checkCamera) {
                     Toast.makeText(MainMenuActivity.this, "This device does not have a camera!", Toast.LENGTH_LONG).show();
                 } else {
-
+                    // TODO: pull up camera screen
                 }
             }
         });
     }
-    /* A safe way to get an instance of the Camera object, from
-    https://developer.android.com/guide/topics/media/camera#java
-    */
-    public static Camera getCameraInstance(){
-        Camera c = null;
-        try {
-            c = Camera.open(); // attempt to get a Camera instance
-        }
-        catch (Exception e){
-            // Camera is not available (in use or does not exist)
-        }
-        return c; // returns null if camera is unavailable
-    }
 
+    private void addRecipesButton() {
+        mOpenRecipes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: what to do when recipe opens
+            }
+        });
+    }
 
 }
