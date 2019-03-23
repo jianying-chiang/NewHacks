@@ -22,8 +22,8 @@ class Frige(restful, Resource):
         reading_id = mongo.db.fridge.insert(jo)
         return mongo.db.readings.find_one({"_id": reading_id})
 
-    def put(self):
-        args = self.parser.parse.args()
+#    def put(self):
+ #       args = self.parser.parse.args()
 
 #
 #class Ingredients(restful, Resource):
