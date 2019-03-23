@@ -12,5 +12,5 @@ AndroidApp/.externalNativeBuild
 AndroidApp/.idea/*
 
 Web Server/.DS_Store
-NewHacks/.DS_Store
+./.DS_Store
 
