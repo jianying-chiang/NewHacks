@@ -20,7 +20,7 @@ public class RecipeExpandActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recipes);
+        setContentView(R.layout.activity_recipeexpand);
 
         Intent i = getIntent();
         ArrayList<String> ingredients  = i.getExtras().getStringArrayList("ingredients");
@@ -30,10 +30,10 @@ public class RecipeExpandActivity extends AppCompatActivity {
         String title = i.getExtras().getString("title") ;
         String publisher = i.getExtras().getString("publisher") ;
         String publisherURL = i.getExtras().getString("publisherURL") ;
-        float socialRank = i.getExtras().getFloat("socialRank") ;
-        int rating = i.getExtras().getInt("rating") ;
+        int socialRank = i.getExtras().getInt("socialRank") ;
+        float rating = i.getExtras().getFloat("rating") ;
 
-        // ini views
+
 
         CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsingToolbarID);
         collapsingToolbarLayout.setTitleEnabled(true);
@@ -48,7 +48,7 @@ public class RecipeExpandActivity extends AppCompatActivity {
 
         recipeURL.setText(Html.fromHtml("<a href=\"" + sourceURL + "\">Link to recipe</a>", 0));
         recipeSource.setText(publisher);
-        recipeRating.setText(rating);
+        recipeRating.setText(String.valueOf(rating));
         String ingr = "";
         for (int j = 0; j < ingredients.size(); j ++) {
             ingr += ingredients.get(j) + "\n";

@@ -5,7 +5,7 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#232F34"
+    android:background="#2d3539"
     tools:context=".MainMenuActivity">
 
 
@@ -13,17 +13,17 @@
         android:id="@+id/MainMenuTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="8dp"
-        android:text="Feed Me"
+        android:fontFamily="@font/seguibl"
+        android:text="feed.me"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:fontFamily="sans-serif-black" />
+        tools:fontFamily="@font/seguibl" />
 
     <ImageButton
         android:id="@+id/openRecipes"

@@ -12,7 +12,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
-import com.ramenbois.newhacks.myapplication.Model.Ingredient;
 import com.ramenbois.newhacks.myapplication.Model.Recipe;
 
 import org.json.JSONArray;
@@ -23,15 +22,10 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 
 public class RecipesActivity extends AppCompatActivity {
 
-    private String jsonURL; // TODO: get url for json data stuff
+    private final String jsonURL = "http://uoft-courseapi.herokuapp.com/"; // TODO: get url for json data stuff
     private JsonArrayRequest request;
     private RequestQueue requestQueue;
     private RecyclerView recView;
@@ -40,37 +34,45 @@ public class RecipesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mainmenu);
-
+        setContentView(R.layout.activity_recipes);
 
         recipes = new ArrayList<>() ;
         recView = findViewById(R.id.recyclerviewid);
-        jsonRequest();
+        Data d = new Data();
+        recipes.add(d.getR1());
+        recipes.add(d.getR2());
+        recipes.add(d.getR3());
+
+
+
+//        jsonRequest();
+        setUpRecyclerView(recipes);
+        System.out.println("AAAAAAAA I finish the JSON Request");
     }
 
     private void jsonRequest() {
         request = new JsonArrayRequest(jsonURL, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                JSONObject jsonObj = null;
+                JSONObject jsonObj;
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         jsonObj = response.getJSONObject(i);
-
-                        JSONArray jsonArray = response.getJSONArray(i);
-                        ArrayList<Ingredient> ingredients = new ArrayList<>();
+                        System.out.println(jsonObj);
+                        JSONArray jsonArray = jsonObj.getJSONArray("ingredients");
+                        ArrayList<String> ingredients = new ArrayList<>();
                         for (int j = 0; j < jsonArray.length(); j++) {
                             String str = new Gson().toJson(jsonArray.getJSONObject(j));
-                            ingredients.add(new Ingredient(str)); // TODO: FIX THIS
+                            ingredients.add(str); // TODO: FIX THIS
                         }
-                        String imageURL = jsonObj.getString("imageURL");
-                        String sourceURL = jsonObj.getString("sourceURL");
-                        String f2fURL = jsonObj.getString("f2fURL");
+                        String imageURL = jsonObj.getString("image_url");
+                        String sourceURL = jsonObj.getString("source_url");
+                        String f2fURL = jsonObj.getString("f2f_url");
                         String title = jsonObj.getString("title");
                         String publisher = jsonObj.getString("publisher");
-                        String publisherURL = jsonObj.getString("publisherURL");
-                        int socialRank = jsonObj.getInt("socialRank");
-                        float rating = BigDecimal.valueOf(jsonObj.getDouble("rating")).floatValue();
+                        String publisherURL = jsonObj.getString("publisher_url");
+                        int socialRank = jsonObj.getInt("rating");
+                        float rating = BigDecimal.valueOf(jsonObj.getDouble("social_rank")).floatValue();
                         recipes.add(new Recipe(ingredients, imageURL, sourceURL, f2fURL,
                                 title, publisher, publisherURL, socialRank, rating));
 
@@ -80,6 +82,7 @@ public class RecipesActivity extends AppCompatActivity {
                 }
 
                 setUpRecyclerView(recipes);
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -94,11 +97,10 @@ public class RecipesActivity extends AppCompatActivity {
     }
 
     private void setUpRecyclerView(List<Recipe> recipes) {
-        RecyclerViewAdapter recViewAdapater = new RecyclerViewAdapter(this, recipes);
+        RecyclerViewAdapter recViewAdapter = new RecyclerViewAdapter(this);
+        recViewAdapter.setmRecipes(recipes);
         recView.setLayoutManager(new LinearLayoutManager(this));
-
-        recView.setAdapter(recViewAdapater);
-
+        recView.setAdapter(recViewAdapter);
     }
 
 }

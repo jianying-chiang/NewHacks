@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Recipe {
 
-    ArrayList<Ingredient> ingredients;
+    ArrayList<String> ingredients;
     String imageURL;
     String sourceURL;
     String f2fURL;
@@ -14,7 +14,7 @@ public class Recipe {
     int socialRank;
     float rating;
 
-    public Recipe(ArrayList<Ingredient> ingredients, String imageURL, String sourceURL, String f2fURL,
+    public Recipe(ArrayList<String> ingredients, String imageURL, String sourceURL, String f2fURL,
                   String title, String publisher, String publisherURL, int socialRank, float rating) {
         this.ingredients = ingredients;
         this.imageURL = imageURL;
@@ -35,11 +35,11 @@ public class Recipe {
         this.rating = rating;
     }
 
-    public ArrayList<Ingredient> getIngredients() {
+    public ArrayList<String> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(ArrayList<Ingredient> ingredients) {
+    public void setIngredients(ArrayList<String> ingredients) {
         this.ingredients = ingredients;
     }
 

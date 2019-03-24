@@ -16,6 +16,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.ramenbois.newhacks.myapplication.Model.Recipe;
 import com.ramenbois.newhacks.myapplication.R.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
@@ -24,25 +25,32 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private List<Recipe> mRecipes;
     RequestOptions option;
 
-    public RecyclerViewAdapter(Context mContext, List<Recipe> mRecipes) {
-        this.mContext = mContext;
+    public List<Recipe> getmRecipes() {
+        return mRecipes;
+    }
+
+    public void setmRecipes(List<Recipe> mRecipes) {
         this.mRecipes = mRecipes;
+    }
+
+    public RecyclerViewAdapter(Context mContext) {
+        this.mContext = mContext;
         option = new RequestOptions().centerCrop().placeholder(drawable.loading_rect).error(drawable.loading_rect);
+        mRecipes = new ArrayList<>();
 
     }
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        View view;
+        View view ;
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        view = inflater.inflate(layout.recipe_item, viewGroup, false);
-
+        view = inflater.inflate(layout.recipe_item,viewGroup,false) ;
         final MyViewHolder viewHolder = new MyViewHolder(view) ;
         viewHolder.viewContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(mContext, RecipesActivity.class);
+                Intent i = new Intent(mContext, RecipeExpandActivity.class);
                 i.putExtra("ingredients",mRecipes.get(viewHolder.getAdapterPosition()).getIngredients());
                 i.putExtra("imageURL",mRecipes.get(viewHolder.getAdapterPosition()).getImageURL());
                 i.putExtra("sourceURL",mRecipes.get(viewHolder.getAdapterPosition()).getSourceURL());
@@ -58,7 +66,33 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         });
 
 
-        return new MyViewHolder(view);
+
+
+        return viewHolder;
+//        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recipe_item, viewGroup, false);
+////        return new ViewHolder(v);
+//        final MyViewHolder viewHolder = new MyViewHolder(v);
+//        viewHolder.viewContainer.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent i = new Intent(mContext, RecipesActivity.class);
+//                i.putExtra("ingredients",mRecipes.get(viewHolder.getAdapterPosition()).getIngredients());
+//                i.putExtra("imageURL",mRecipes.get(viewHolder.getAdapterPosition()).getImageURL());
+//                i.putExtra("sourceURL",mRecipes.get(viewHolder.getAdapterPosition()).getSourceURL());
+//                i.putExtra("f2fURL",mRecipes.get(viewHolder.getAdapterPosition()).getF2fURL());
+//                i.putExtra("title",mRecipes.get(viewHolder.getAdapterPosition()).getTitle());
+//                i.putExtra("publisher",mRecipes.get(viewHolder.getAdapterPosition()).getPublisher());
+//                i.putExtra("publisherURL",mRecipes.get(viewHolder.getAdapterPosition()).getPublisherURL());
+//                i.putExtra("socialRank",mRecipes.get(viewHolder.getAdapterPosition()).getSocialRank());
+//                i.putExtra("rating",mRecipes.get(viewHolder.getAdapterPosition()).getRating());
+//                mContext.startActivity(i);
+//
+//            }
+//        });
+//
+//
+//        return new MyViewHolder(v);
     }
 
     @Override

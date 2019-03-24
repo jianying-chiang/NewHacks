@@ -13,7 +13,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ramenbois.newhacks.myapplication.Model.CheckedIngr;
-import com.ramenbois.newhacks.myapplication.Model.Ingredient;
 
 import java.util.ArrayList;
 
@@ -33,20 +32,19 @@ public class ChooseIngrActivity extends AppCompatActivity {
         setUpIngredients();
         ingredientsCheckList = new ArrayList<>();
 
-        ingredientsCheckList.add(new CheckedIngr("Apple Pie", false));
-        ingredientsCheckList.add(new CheckedIngr("Banana Bread", false));
-        ingredientsCheckList.add(new CheckedIngr("Cupcake", false));
-        ingredientsCheckList.add(new CheckedIngr("Donut", true));
-        ingredientsCheckList.add(new CheckedIngr("Eclair", true));
-        ingredientsCheckList.add(new CheckedIngr("Froyo", true));
-        ingredientsCheckList.add(new CheckedIngr("Gingerbread", true));
-        ingredientsCheckList.add(new CheckedIngr("Honeycomb", false));
-        ingredientsCheckList.add(new CheckedIngr("Ice Cream Sandwich", false));
-        ingredientsCheckList.add(new CheckedIngr("Jelly Bean", false));
-        ingredientsCheckList.add(new CheckedIngr("Kitkat", false));
-        ingredientsCheckList.add(new CheckedIngr("Lollipop", false));
-        ingredientsCheckList.add(new CheckedIngr("Marshmallow", false));
-        ingredientsCheckList.add(new CheckedIngr("Nougat", false));
+        ingredientsCheckList.add(new CheckedIngr("Apples", false));
+        ingredientsCheckList.add(new CheckedIngr("Bananas", false));
+        ingredientsCheckList.add(new CheckedIngr("Broccoli", false));
+        ingredientsCheckList.add(new CheckedIngr("Carrots", false));
+        ingredientsCheckList.add(new CheckedIngr("Chicken", false));
+        ingredientsCheckList.add(new CheckedIngr("Eggs", false));
+        ingredientsCheckList.add(new CheckedIngr("Fish", false));
+        ingredientsCheckList.add(new CheckedIngr("Ground Beef", false));
+        ingredientsCheckList.add(new CheckedIngr("Hummus", false));
+        ingredientsCheckList.add(new CheckedIngr("Oranges", false));
+        ingredientsCheckList.add(new CheckedIngr("Potatoes", false));
+        ingredientsCheckList.add(new CheckedIngr("Rice", false));
+        ingredientsCheckList.add(new CheckedIngr("Tomatoes", false));
 
         adapter = new CustomAdapter(ingredientsCheckList, getApplicationContext());
 
