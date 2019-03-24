@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.hardware.camera2.*;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -19,9 +20,12 @@ public class MainMenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_mainmenu);
+        mOpenCamera = findViewById(R.id.openCamera);
         addCameraButton();
-        addRecipesButton();
+        //addRecipesButton();
     }
 
     private void addCameraButton() {
@@ -34,6 +38,8 @@ public class MainMenuActivity extends AppCompatActivity {
                     Toast.makeText(MainMenuActivity.this, "This device does not have a camera!", Toast.LENGTH_LONG).show();
                 } else {
                     // TODO: pull up camera screen
+                    Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                    startActivity(intent);
                 }
             }
         });
