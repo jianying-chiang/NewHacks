@@ -12,10 +12,10 @@ public class Recipe {
     String publisher;
     String publisherURL;
     int socialRank;
-    int rating;
+    float rating;
 
     public Recipe(ArrayList<Ingredient> ingredients, String imageURL, String sourceURL, String f2fURL,
-                  String title, String publisher, String publisherURL, int socialRank, int rating) {
+                  String title, String publisher, String publisherURL, int socialRank, float rating) {
         this.ingredients = ingredients;
         this.imageURL = imageURL;
         this.sourceURL = sourceURL;
@@ -27,11 +27,11 @@ public class Recipe {
         this.rating = rating;
     }
 
-    public int getRating() {
+    public float getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 

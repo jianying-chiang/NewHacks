@@ -7,17 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1b541de-4483-4615-84d9-7aee2f99723c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/AndroidApp/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndroidApp/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndroidApp/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/AndroidApp/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AndroidApp/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/ramenbois/newhacks/myapplication/MainMenuActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/ramenbois/newhacks/myapplication/MainMenuActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/ramenbois/newhacks/myapplication/Model/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/ramenbois/newhacks/myapplication/Model/Ingredient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/ramenbois/newhacks/myapplication/Model/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/ramenbois/newhacks/myapplication/Model/Recipe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/ramenbois/newhacks/myapplication/RecipesActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/ramenbois/newhacks/myapplication/RecipesActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/ramenbois/newhacks/myapplication/RecyclerViewAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/ramenbois/newhacks/myapplication/RecyclerViewAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndroidApp/app/src/main/res/layout/activity_recipes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/app/src/main/res/layout/activity_recipes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndroidApp/app/src/main/res/layout/recipe_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/app/src/main/res/layout/recipe_item.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
