@@ -78,7 +78,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Link to recipe"
+                        android:text="@string/urltext"
                         android:layout_marginTop="5dp"
                         android:id="@+id/recipe_url"/>
 
