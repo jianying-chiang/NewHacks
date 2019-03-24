@@ -46,11 +46,6 @@ public class MainMenuActivity extends AppCompatActivity {
 
     private ImageButton mOpenCamera;
     private ImageButton mOpenRecipes;
-    private String jsonURL; // TODO: get url for json data stuff
-    private JsonArrayRequest request;
-    private RequestQueue requestQueue;
-    private RecyclerView recView;
-    private List<Recipe> recipes ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +55,6 @@ public class MainMenuActivity extends AppCompatActivity {
         addCameraButton();
 //        addRecipesButton();
 
-        recipes = new ArrayList<>() ;
-        recView = findViewById(R.id.recyclerviewid);
-        jsonRequest();
     }
 
     private void addCameraButton() {
@@ -135,57 +127,5 @@ public class MainMenuActivity extends AppCompatActivity {
         });
     }
 
-    private void jsonRequest() {
-        request = new JsonArrayRequest(jsonURL, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                JSONObject jsonObj = null;
-                for (int i = 0; i < response.length(); i++) {
-                    try {
-                        jsonObj = response.getJSONObject(i);
-
-                        JSONArray jsonArray = response.getJSONArray(i);
-                        ArrayList<Ingredient> ingredients = new ArrayList<>();
-                        for (int j = 0; j < jsonArray.length(); j++) {
-                            String str = new Gson().toJson(jsonArray.getJSONObject(j));
-                            ingredients.add(new Ingredient(str)); // TODO: FIX THIS
-                        }
-                        String imageURL = jsonObj.getString("imageURL");
-                        String sourceURL = jsonObj.getString("sourceURL");
-                        String f2fURL = jsonObj.getString("f2fURL");
-                        String title = jsonObj.getString("title");
-                        String publisher = jsonObj.getString("publisher");
-                        String publisherURL = jsonObj.getString("publisherURL");
-                        int socialRank = jsonObj.getInt("socialRank");
-                        float rating = BigDecimal.valueOf(jsonObj.getDouble("rating")).floatValue();
-                        recipes.add(new Recipe(ingredients, imageURL, sourceURL, f2fURL,
-                                title, publisher, publisherURL, socialRank, rating));
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-                setUpRecyclerView(recipes);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
-
-        requestQueue = Volley.newRequestQueue(MainMenuActivity.this);
-        requestQueue.add(request);
-
-    }
-
-    private void setUpRecyclerView(List<Recipe> recipes) {
-        RecyclerViewAdapter recViewAdapater = new RecyclerViewAdapter(this, recipes);
-        recView.setLayoutManager(new LinearLayoutManager(this));
-
-        recView.setAdapter(recViewAdapater);
-
-    }
 
 }
