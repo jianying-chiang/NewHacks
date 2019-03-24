@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.ramenbois.newhacks.myapplication.Model.Ingredient;
 import com.ramenbois.newhacks.myapplication.Model.Recipe;
 import com.ramenbois.newhacks.myapplication.R.*;
 

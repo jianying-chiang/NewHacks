@@ -1,66 +1,117 @@
 package com.ramenbois.newhacks.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Camera;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.hardware.camera2.*;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.Window;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+import com.ramenbois.newhacks.myapplication.Model.Ingredient;
+import com.ramenbois.newhacks.myapplication.Model.Recipe;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.List;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class RecipesActivity extends AppCompatActivity {
 
-
+    private String jsonURL; // TODO: get url for json data stuff
+    private JsonArrayRequest request;
+    private RequestQueue requestQueue;
+    private RecyclerView recView;
+    private List<Recipe> recipes ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recipes);
-
-        Intent i = getIntent();
-        ArrayList<String> name  = i.getExtras().getStringArrayList("ingredients");
-        String imageURL = i.getExtras().getString("imageURL");
-        String sourceURL = i.getExtras().getString("sourceURL") ;
-        String f2fURL = i.getExtras().getString("f2fURL");
-        String title = i.getExtras().getString("title") ;
-        String publisher = i.getExtras().getString("publisher") ;
-        String publisherURL = i.getExtras().getString("publisherURL") ;
-        float socialRank = i.getExtras().getFloat("socialRank") ;
-        int rating = i.getExtras().getInt("rating") ;
-
-        // ini views
-
-        CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.collapsingtoolbar_id);
-        collapsingToolbarLayout.setTitleEnabled(true);
-
-        TextView tv_name = findViewById(R.id.aa_anime_name);
-        TextView tv_studio = findViewById(R.id.aa_studio);
-        TextView tv_categorie = findViewById(R.id.aa_categorie) ;
-        TextView tv_description = findViewById(R.id.aa_description);
-        TextView tv_rating  = findViewById(R.id.aa_rating) ;
-        ImageView img = findViewById(R.id.aa_thumbnail);
-
-        // setting values to each view
-
-        tv_name.setText(name);
-        tv_categorie.setText(category);
-        tv_description.setText(description);
-        tv_rating.setText(rating);
-        tv_studio.setText(studio);
-
-        collapsingToolbarLayout.setTitle(name);
+        setContentView(R.layout.activity_mainmenu);
 
 
-        RequestOptions requestOptions = new RequestOptions().centerCrop().placeholder(R.drawable.loading_shape).error(R.drawable.loading_shape);
+        recipes = new ArrayList<>() ;
+        recView = findViewById(R.id.recyclerviewid);
+        jsonRequest();
+    }
 
+    private void jsonRequest() {
+        request = new JsonArrayRequest(jsonURL, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                JSONObject jsonObj = null;
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        jsonObj = response.getJSONObject(i);
 
-        // set image using Glide
-        Glide.with(this).load(image_url).apply(requestOptions).into(img);
+                        JSONArray jsonArray = response.getJSONArray(i);
+                        ArrayList<Ingredient> ingredients = new ArrayList<>();
+                        for (int j = 0; j < jsonArray.length(); j++) {
+                            String str = new Gson().toJson(jsonArray.getJSONObject(j));
+                            ingredients.add(new Ingredient(str)); // TODO: FIX THIS
+                        }
+                        String imageURL = jsonObj.getString("imageURL");
+                        String sourceURL = jsonObj.getString("sourceURL");
+                        String f2fURL = jsonObj.getString("f2fURL");
+                        String title = jsonObj.getString("title");
+                        String publisher = jsonObj.getString("publisher");
+                        String publisherURL = jsonObj.getString("publisherURL");
+                        int socialRank = jsonObj.getInt("socialRank");
+                        float rating = BigDecimal.valueOf(jsonObj.getDouble("rating")).floatValue();
+                        recipes.add(new Recipe(ingredients, imageURL, sourceURL, f2fURL,
+                                title, publisher, publisherURL, socialRank, rating));
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                setUpRecyclerView(recipes);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        requestQueue = Volley.newRequestQueue(RecipesActivity.this);
+        requestQueue.add(request);
 
     }
 
+    private void setUpRecyclerView(List<Recipe> recipes) {
+        RecyclerViewAdapter recViewAdapater = new RecyclerViewAdapter(this, recipes);
+        recView.setLayoutManager(new LinearLayoutManager(this));
+
+        recView.setAdapter(recViewAdapater);
+
+    }
 
 }

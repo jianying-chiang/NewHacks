@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.demotxt.myapp.myapplication.activities.AnimeActivity"
+    tools:context=".RecipesActivity"
     android:background="#303030">
 
     <android.support.design.widget.AppBarLayout
@@ -17,7 +17,7 @@
         <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/collapsingtoolbar_id"
+            android:id="@+id/collapsingToolbarID"
             app:layout_scrollFlags="exitUntilCollapsed|scroll"
             app:title="Anime Title"
             app:contentScrim="?attr/colorPrimary"
@@ -44,8 +44,8 @@
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
-                    android:background="@drawable/loading_shape"
-                    android:id="@+id/aa_thumbnail"/>
+                    android:background="@drawable/loading_rect"
+                    android:id="@+id/recipe_thumbnail"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -55,28 +55,20 @@
 
 
                     <TextView
+                        android:layout_marginTop="15dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/aa_anime_name"
-                        android:text="Anime Title"
-                        android:textStyle="bold"
-                        android:textSize="18sp"/>
-
-                    <TextView
-                        android:layout_marginTop="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Category"
-                        android:id="@+id/aa_categorie"/>
+                        android:text="Source"
+                        android:id="@+id/recipe_source"/>
 
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/aa_rating"
+                        android:id="@+id/recipe_rating"
                         android:text="0.0"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/rating_background"
+                        android:background="@drawable/rating_bg"
                         android:textColor="#fff"
                         android:textSize="15sp"
                         android:textStyle="bold"
@@ -86,9 +78,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Studio"
+                        android:text="Link to recipe"
                         android:layout_marginTop="5dp"
-                        android:id="@+id/aa_studio"/>
+                        android:id="@+id/recipe_url"/>
 
 
 
@@ -107,16 +99,16 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior"
         android:padding="16dp"        >
 
 
         <TextView
             android:textColor="#fff"
-            android:text="Anime Description"
+            android:text="Ingredients"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/aa_description"/>
+            android:id="@+id/recipe_ingredients"/>
 
 
 
