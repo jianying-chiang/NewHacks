@@ -173,7 +173,7 @@ public class Data {
                 "All Recipes",
                 "https://www.allrecipes.com/",
                 0,
-                (float) 37.95);
+                (float) 37.45);
     }
 
     public ArrayList<String> getR1_rec() {
