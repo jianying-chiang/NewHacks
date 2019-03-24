@@ -23,7 +23,8 @@ public class MainMenuActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_mainmenu);
-        //addCameraButton();
+        mOpenCamera = findViewById(R.id.openCamera);
+        addCameraButton();
         //addRecipesButton();
     }
 
@@ -37,6 +38,8 @@ public class MainMenuActivity extends AppCompatActivity {
                     Toast.makeText(MainMenuActivity.this, "This device does not have a camera!", Toast.LENGTH_LONG).show();
                 } else {
                     // TODO: pull up camera screen
+                    Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                    startActivity(intent);
                 }
             }
         });

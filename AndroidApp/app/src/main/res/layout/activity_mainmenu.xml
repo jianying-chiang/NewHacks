@@ -9,7 +9,7 @@
     tools:context=".MainMenuActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/topBar"
         android:layout_width="419dp"
         android:layout_height="68dp"
         android:layout_marginEnd="8dp"
@@ -36,7 +36,7 @@
         tools:fontFamily="sans-serif-black" />
 
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/openRecipes"
         android:layout_width="300dp"
         android:layout_height="150dp"
         android:layout_marginStart="8dp"
@@ -48,7 +48,7 @@
         app:srcCompat="@drawable/recipebutton" />
 
     <ImageButton
-        android:id="@+id/imageButton6"
+        android:id="@+id/openCamera"
         android:layout_width="300dp"
         android:layout_height="150dp"
         android:layout_marginStart="8dp"
