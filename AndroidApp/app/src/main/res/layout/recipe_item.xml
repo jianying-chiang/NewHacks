@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:text="Recipe Name"
             android:textColor="#494949"
-            android:textSize="24dp"
+            android:textSize="18dp"
             android:textStyle="bold" />
 
 
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:text="Source"
             android:textColor="#5b5b5b" />
 
