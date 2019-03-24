@@ -122,9 +122,12 @@ public class MainMenuActivity extends AppCompatActivity {
         mOpenRecipes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: what to do when recipe opens
+                Context context = MainMenuActivity.this;
+                Intent gmIntent = new Intent(MainMenuActivity.this, RecipesActivity.class);
+                startActivity(gmIntent);
+                }
             }
-        });
+        );
     }
 
 
