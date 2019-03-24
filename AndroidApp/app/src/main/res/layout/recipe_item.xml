@@ -32,12 +32,12 @@
 
 
         <TextView
-            android:id="@+id/studio"
+            android:id="@+id/source"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:textSize="20sp"
-            android:text="Studio"
+            android:text="Source"
             android:textColor="#5b5b5b" />
 
         <TextView

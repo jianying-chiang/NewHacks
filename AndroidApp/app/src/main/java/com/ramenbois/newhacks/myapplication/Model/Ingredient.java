@@ -2,7 +2,7 @@ package com.ramenbois.newhacks.myapplication.Model;
 
 import java.util.Date;
 
-class Ingredient {
+public class Ingredient {
     String name;
     Date expiry;
 
