@@ -64,25 +64,62 @@ public class Data {
             "1 bay leaf\n" +
             "1/2 teaspoon crushed dried thyme";
     ArrayList<String> r4_rec = new ArrayList<>();
-    String r4_in;
+    String r4_in = "1 tablespoon olive oil\n" +
+            "1 large onion, sliced\n" +
+            "2 (14.5 ounce) cans stewed tomatoes\n" +
+            "1/2 (6 ounce) can tomato paste\n" +
+            "1 teaspoon salt\n" +
+            "1/4 teaspoon black pepper\n" +
+            "1/4 teaspoon cayenne pepper\n" +
+            "1/2 teaspoon red pepper flakes\n" +
+            "1 tablespoon Worcestershire sauce\n" +
+            "1 teaspoon chopped fresh rosemary\n" +
+            "2 cups water\n" +
+            "1 (3 pound) whole chicken, cut into 8 pieces\n" +
+            "1 cup uncooked white rice\n" +
+            "1 cup diced carrots\n" +
+            "1/2 pound fresh green beans, trimmed and snapped into 1 to 2 inch pieces\n" +
+            "1/4 teaspoon ground nutmeg";
     ArrayList<String> r5_rec = new ArrayList<>();
-    String r5_in = "1 tablespoon vegetable oil\n" +
-            "1 onion, chopped\n" +
-            "1 pound smoked sausage, sliced\n" +
-            "3 cups water\n" +
-            "1 head cabbage, cored and coarsely chopped\n" +
-            "3 carrots, sliced\n" +
-            "3 stalks celery, sliced\n" +
-            "1/3 cup uncooked long grain white rice\n" +
-            "1 (15 ounce) can red beans, with liquid\n" +
-            "1 (8 ounce) can tomato sauce\n" +
-            "1 (28 ounce) can crushed tomatoes\n" +
-            "2 cubes chicken bouillon\n" +
-            "salt to taste\n" +
-            "1 bay leaf\n" +
-            "1/2 teaspoon crushed dried thyme";
+    String r5_in = "1/4 cup butter\n" +
+            "1/4 cup sliced onion\n" +
+            "1/4 cup sliced carrots\n" +
+            "1/4 cup chopped celery\n" +
+            "1/4 cup chopped green bell pepper\n" +
+            "1 apple - peeled, cored and sliced\n" +
+            "1 cup chopped chicken breast meat\n" +
+            "1/4 cup all-purpose flour\n" +
+            "1 teaspoon curry powder\n" +
+            "1/4 teaspoon chopped fresh mace\n" +
+            "4 whole cloves\n" +
+            "1 tablespoon chopped fresh parsley\n" +
+            "1 cup stewed tomatoes\n" +
+            "salt and pepper to taste\n" +
+            "1 cup cooked white rice\n" +
+            "5 cups beef stock";
 
-    Recipe r1, r2, r3, r4, r5;
+    Recipe r1;
+    Recipe r2;
+    Recipe r3;
+    Recipe r4;
+
+    public Recipe getR4() {
+        return r4;
+    }
+
+    public void setR4(Recipe r4) {
+        this.r4 = r4;
+    }
+
+    public Recipe getR5() {
+        return r5;
+    }
+
+    public void setR5(Recipe r5) {
+        this.r5 = r5;
+    }
+
+    Recipe r5;
 
     public Data() {
         r1_rec.add(r1_in);
@@ -117,6 +154,26 @@ public class Data {
                 "https://www.allrecipes.com/",
                 0,
                 (float) 40.7);
+        r4_rec.add(r4_in);
+        r4 = new Recipe(r4_rec,
+                "http://static.food2fork.com/355930609.jpg",
+                "https://www.allrecipes.com/recipe/67061/jollof-rice/",
+                "https://www.food2fork.com/view/Jollof_Rice/18025",
+                "Jollof Rice",
+                "All Recipes",
+                "https://www.allrecipes.com/",
+                0,
+                (float) 37.95);
+        r5_rec.add(r5_in);
+        r5 = new Recipe(r5_rec,
+                "http://static.food2fork.com/95853324e8.jpg",
+                "https://www.allrecipes.com/recipe/13259/mulligatawny-soup-iii/",
+                "https://www.food2fork.com/view/Mulligatawny_Soup_III/e89c77",
+                "Mulligatawny Soup III",
+                "All Recipes",
+                "https://www.allrecipes.com/",
+                0,
+                (float) 37.95);
     }
 
     public ArrayList<String> getR1_rec() {
