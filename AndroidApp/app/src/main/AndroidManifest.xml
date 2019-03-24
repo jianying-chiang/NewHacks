@@ -21,6 +21,9 @@
             </intent-filter>
 
         </activity>
+        <activity android:name=".ChooseIngrActivity" />
+        <activity android:name=".RecipesActivity" />
+        <activity android:name=".RecipeExpandActivity" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
