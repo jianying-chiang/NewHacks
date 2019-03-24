@@ -65,7 +65,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
         myViewHolder.recipeName.setText(mRecipes.get(i).getTitle());
-        myViewHolder.recipeRating.setText(mRecipes.get(i).getRating());
+        myViewHolder.recipeRating.setText(String.valueOf(mRecipes.get(i).getRating()));
         myViewHolder.recipeSource.setText(mRecipes.get(i).getPublisher());
 
         Glide.with(mContext).load(mRecipes.get(i).getImageURL()).apply(option).into(myViewHolder.imgThumbnail);
