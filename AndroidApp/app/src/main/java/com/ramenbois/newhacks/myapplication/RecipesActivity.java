@@ -42,8 +42,8 @@ public class RecipesActivity extends AppCompatActivity {
         recipes.add(d.getR1());
         recipes.add(d.getR2());
         recipes.add(d.getR3());
-
-
+        recipes.add(d.getR4());
+        recipes.add(d.getR5());
 
 //        jsonRequest();
         setUpRecyclerView(recipes);
